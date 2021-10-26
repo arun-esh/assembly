@@ -1,0 +1,4 @@
+/studio/comp/*
+!/studio/comp/*.lst
+!/studio/comp/*.asm
+
