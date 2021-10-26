@@ -1,4 +1,4 @@
 
 !/studio/comp/*.lst
 !/studio/comp/**.asm
-/studio/
+/studio/comp/*
