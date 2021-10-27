@@ -15,9 +15,13 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
-	arrayBYTE BYTE 10,20,30,40
+	array1 BYTE 10,20,30,40
 
-	arrayWORD WORD 15,25,35,45
+	array2 WORD 15,25,35,45
+
+	array3 BYTE 10,20,30,40
+			  BYTE 50,60,70,80
+			  BYTE 55,65,75,85
 	
 	
 
@@ -26,32 +30,48 @@ main PROC
 	
 	; code goes here
 	MOV EAX, 0
-	MOV AL, arrayBYTE
+	MOV AL, array1
 
 	MOV EBX, 0
-	MOV BL, arrayBYTE+1
+	MOV BL, array1+1
 
 	MOV ECX, 0
-	MOV CL, arrayBYTE+2
+	MOV CL, array1+2
 
 	MOV EDX, 0
-	MOV DL, arrayBYTE+3
+	MOV DL, array1+3
 
 	call DumpRegs 			; displays registers
 
 	MOV EAX, 0
-	MOV AX, arrayWORD
+	MOV AX, array2
 
 	MOV EBX, 0
-	MOV BX, arrayWORD+2
+	MOV BX, array2+2
 
 	MOV ECX, 0
-	MOV CX, arrayWORD+4
+	MOV CX, array2+4
 
 	MOV EDX, 0
-	MOV DX, arrayWORD+6
+	MOV DX, array2+6
 
 	call DumpRegs 			; displays registers
+
+
+	MOV EAX, 0
+	MOV AL, array3
+
+	MOV EBX, 0
+	MOV BL, array3+1
+
+	MOV ECX, 0
+	MOV CL, array3+2
+
+	MOV EDX, 0
+	MOV DL, array3+11
+
+	call DumpRegs 			; displays registers
+
 
 	exit
 

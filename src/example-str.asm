@@ -37,11 +37,11 @@ main PROC
 	
 	; code goes here
 	MOV EDX, OFFSET string1
-	call WriteString
+	call WriteString				; call to print out strings
 	call DumpRegs
 
 	MOV EDX, OFFSET string2
-	call WriteString
+	call WriteString				; call to print out strings
 	call DumpRegs ; displays registers in console
 
 	exit
