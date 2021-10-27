@@ -24,8 +24,8 @@ INCLUDELIB user32.lib
 main PROC
 	
 	; code goes here
-	MOV EAX, OFFSET greeting1
-
+	MOV EDX, OFFSET greeting1
+	call WriteString
 	call DumpRegs ; displays registers in console
 
 	exit
