@@ -15,16 +15,32 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
-	greeting1 BYTE "Welcome to the Encryption demo Program"
-		  BYTE "created by Kip.",0dh,0ah
+
+
+	string1 BYTE "Welcome to the Encryption demo Program"
+		  BYTE " created by Kip.",0dh,0ah
 		  BYTE "If you wish to modify this program, Please "
 		  BYTE "send me a copy.", 0dh, 0ah, 0
+
+
+
+	string2 BYTE "Checking Account:",0dh,0ah,0dh,0ah,
+					"1. Create a new account",0dh,0ah,
+					"2. Deposit money",0dh,0ah,
+					"3. Withdraw money",0dh,0ah,
+					"4. Check balance",0dh,0ah,
+					"5. Exit",0dh,0ah,
+					"Enter your choice: ",0dh,0ah,0
 
 .code
 main PROC
 	
 	; code goes here
-	MOV EDX, OFFSET greeting1
+	MOV EDX, OFFSET string1
+	call WriteString
+	call DumpRegs
+
+	MOV EDX, OFFSET string2
 	call WriteString
 	call DumpRegs ; displays registers in console
 
