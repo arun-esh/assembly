@@ -16,18 +16,15 @@ INCLUDELIB user32.lib
 
 	; data declarations go here
 
-	greeting1 BYTE "Hello World!", 0
+	firstName BYTE "Tom", 0
 
 .code
 main PROC
 	
-	; code goes here
-	MOV EAX, OFFSET greeting1
+	MOV EDX, offset firstname
+	call writestring
 
-	call WRITESTRING
 	
-
-	call DumpRegs ; displays registers in console
 
 	exit
 
