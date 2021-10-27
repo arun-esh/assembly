@@ -146,8 +146,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="main.asm">
-      <FileType>Document</FileType>
+    <MASM Include="main.asm" />
+    <MASM Include="test.asm">
+      <AssembledCodeListingFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(TargetName)</AssembledCodeListingFile>
     </MASM>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
