@@ -1,18 +1,30 @@
-.386
-.model flat,stdcall
-.stack 4096
-ExitProcess PROTO, dwExitCode:dword
+TITLE
+
+; Name: 
+; Date: 
+; ID: 
+; Description: 
+
+INCLUDE Irvine32.inc
+INCLUDELIB Irvine32.lib
+
+; these two files are only necessary if you're not using Visual Studio
+INCLUDELIB kernel32.lib
+INCLUDELIB user32.lib
 
 .data
-sum DWORD ?
+
+	; data declarations go here
 
 .code
 main PROC
-    mov eax, 7 
-    add eax, 5
-    mov sum, eax 
- 
-    INVOKE ExitProcess, 0
+	
+	; code goes here
+	
+
+	call DumpRegs ; displays registers in console
+
+	exit
 
 main ENDP
 END main
