@@ -12,22 +12,25 @@ INCLUDELIB Irvine32.lib
 INCLUDELIB kernel32.lib
 INCLUDELIB user32.lib
 
+
 .data
 
 	; data declarations go here
 
-	greeting1 BYTE "Hello World!", 0
+	greeting1 BYTE "Tom",00dh,0ah,0
 
 .code
 main PROC
 	
 	; code goes here
-	MOV EAX, OFFSET greeting1
+	MOV EDX, OFFSET greeting1
+	call WriteString
+	;call ReadString 		; ask user to type
 
-	call WRITESTRING
+	;call WriteString
 	
 
-	call DumpRegs ; displays registers in console
+	;call DumpRegs ; displays registers in console
 
 	exit
 
