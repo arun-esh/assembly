@@ -31,7 +31,12 @@ INCLUDELIB user32.lib
 					"4. Check balance",0dh,0ah,
 					"5. Exit",0dh,0ah,
 					"Enter your choice: ",0dh,0ah,0
+	
+	string3 BYTE "Hello, there!",\						; / will concatenate two source codes lines
+				" Please enter your name: ",0dh,0ah,0
 
+
+	string4 BYTE "Testing",0
 .code
 main PROC
 	
@@ -41,6 +46,14 @@ main PROC
 	call DumpRegs
 
 	MOV EDX, OFFSET string2
+	call WriteString				; call to print out strings
+	call DumpRegs ; displays registers in console
+
+	MOV EDX, OFFSET string3
+	call WriteString				; call to print out strings
+	call DumpRegs ; displays registers in console
+
+	MOV EDX, OFFSET string4
 	call WriteString				; call to print out strings
 	call DumpRegs ; displays registers in console
 
