@@ -1,6 +1,5 @@
-
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 12:07:41
-example-imul.asm					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 13:54:59
+Arithmetic_NEG.asm					     Page 1 - 1
 
 
 				TITLE
@@ -37,21 +36,27 @@ example-imul.asm					     Page 1 - 1
  00000000			.data
 
 					; data declarations go here
-
+ 00000000 0B				var1 BYTE 11
+ 00000001 0E				var2 BYTE 14
 
  00000000			.code
  00000000			main PROC
 					
-7 EB			iMUL EBX						; imul instruction multiply the content of EAX with the instruction operand 
- 0000000D  A3 00000004 R		MOV PRODUCT, EAX
-					
+					; code goes here
+ 00000000  E8 00000000 E		call DumpRegs ; displays registers in console
 
- 00000012  E8 00000000 E		call DumpRegs ; displays registers in console
+ 00000005  F6 1D 00000000 R		NEG var1
+ 0000000B  B8 00000000			MOV eax, 0
+ 00000010  A0 00000000 R		MOV al, var1
+ 00000015  E8 00000000 E		call DumpRegs ; displays registers in console
+
 
 					exit
 
-
-example-imul.asm					     Symbols 2 - 1
+ 00000021			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 13:54:59
+Arithmetic_NEG.asm					     Symbols 2 - 1
 
 
 
@@ -136,6 +141,17 @@ SYSTEMTIME . . . . . . . . . . .	 00000010
   wMilliseconds  . . . . . . . .	 0000000E	 Word
 WINDOW_BUFFER_SIZE_RECORD  . . .	 00000004
   dwSize . . . . . . . . . . . .	 00000000	 DWord
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000002 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000021 Para	  Public  'CODE'	
+
 
 Procedures, parameters, and locals:
 
@@ -233,6 +249,23 @@ WriteConsoleOutputCharacterA . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteDec . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteFile  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteFloat . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteHexB  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteHex . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteInt . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteStackFrameName  . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000021 Public STDCALL
+printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
 
 @CodeSize  . . . . . . . . . . .	Number	 00000000h   
 @DataSize  . . . . . . . . . . .	Number	 00000000h   
@@ -345,7 +378,14 @@ MOUSE_EVENT  . . . . . . . . . .	Number	 00000002h
 MessageBox . . . . . . . . . . .	Text   	 MessageBoxA
 NULL . . . . . . . . . . . . . .	Number	 00000000h   
 NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
-OP . . . . . . . .	Number	 00000040h   
+OPEN_ALWAYS  . . . . . . . . . .	Number	 00000004h   
+OPEN_EXISTING  . . . . . . . . .	Number	 00000003h   
+PeekConsoleInput . . . . . . . .	Text   	 PeekConsoleInputA
+RIGHT_ALT_PRESSED  . . . . . . .	Number	 00000001h   
+RIGHT_CTRL_PRESSED . . . . . . .	Number	 00000004h   
+ReadConsoleInput . . . . . . . .	Text   	 ReadConsoleInputA
+ReadConsole  . . . . . . . . . .	Text   	 ReadConsoleA
+SCROLLLOCK_ON  . . . . . . . . .	Number	 00000040h   
 SHIFT_MASK . . . . . . . . . . .	Number	 00000010h   
 SHIFT_PRESSED  . . . . . . . . .	Number	 00000010h   
 STD_ERROR_HANDLE . . . . . . . .	Number	 -0000000Ch   
@@ -446,7 +486,16 @@ green  . . . . . . . . . . . . .	Number	 00000002h
 lightBlue  . . . . . . . . . . .	Number	 00000009h   
 lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
 lightGray  . . . . . . . . . . .	Number	 00000007h   
-lightGreen . . . . . . . . . . .	Number	 0000000Ah    . .	Number	 0000000Eh   
+lightGreen . . . . . . . . . . .	Number	 0000000Ah   
+lightMagenta . . . . . . . . . .	Number	 0000000Dh   
+lightRed . . . . . . . . . . . .	Number	 0000000Ch   
+magenta  . . . . . . . . . . . .	Number	 00000005h   
+red  . . . . . . . . . . . . . .	Number	 00000004h   
+var1 . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
+var2 . . . . . . . . . . . . . .	Byte	 00000001 _DATA	
+white  . . . . . . . . . . . . .	Number	 0000000Fh   
+wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
+yellow . . . . . . . . . . . . .	Number	 0000000Eh   
 
 	   0 Warnings
 	   0 Errors

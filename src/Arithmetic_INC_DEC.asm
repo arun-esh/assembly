@@ -15,20 +15,25 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
-
-	var1 DWORD 10
-	PRODUCT DWORD ?
-
+	var1 BYTE 11
+	var2 BYTE 14
 
 .code
 main PROC
 	
 	; code goes here
+	call DumpRegs ; displays registers in console
 
-	MOV EAX, 5
-	MOV EBX, var1
-	iMUL EBX						; imul instruction multiply the content of EAX with the instruction operand 
-	MOV PRODUCT, EAX
+	DEC var1				; decreasing the value of var1
+	MOV eax, 0				; clearing EAX for clear visibility
+	MOV al, var1			; decreased value of var1 moved to al
+	call DumpRegs ; displays registers in console
+
+	INC var2
+	MOV ebx, 0
+	MOV bl, var2
+	call DumpRegs ; displays registers in console
+
 	
 
 	call DumpRegs ; displays registers in console
