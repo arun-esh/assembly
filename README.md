@@ -12,7 +12,7 @@
 
 
 
-# [MOV](<a name="mov"></a>)
+# [MOV]<a name="mov"></a>
 
 :heavy_check_mark: This instruction copies the source operand to destination operand, leaving source operand unchanged.
 
