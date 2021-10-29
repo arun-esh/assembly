@@ -1,7 +1,5 @@
 # Operands Types
 
-[TOC]
-
 x86 instruction formats
 
 ```[label:] mnemonic [operands][ ; comment ]```
