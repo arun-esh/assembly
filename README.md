@@ -46,7 +46,7 @@ To move data from memory to another memory location, move source memory operand'
 
 ## [Sample Listing File](<a name="sample_Listing_File"></a>)
 
-Here is the sample Listing file: [Sample Listing file](/samplefiles/irvine.lst)
+Here is the sample Listing file: [Sample Listing file](/docs/default/irvine.lst)
 
 
 
