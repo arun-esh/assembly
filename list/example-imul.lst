@@ -1,5 +1,5 @@
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/28/21 21:48:39
-example.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 12:07:41
+example-imul.asm					     Page 1 - 1
 
 
 				TITLE
@@ -36,38 +36,29 @@ example.asm						     Page 1 - 1
  00000000			.data
 
 					; data declarations go here
- 00000000 50				var1 BYTE 50h
- 00000001 60				var2 BYTE 60h
- 00000002 70				var3 BYTE 70h
- 00000003 80				var4 BYTE 80h
+ 00000000 0000000A			var1 DWORD 10
+ 00000004 00000000			PRODUCT DWORD ?
+
 
  00000000			.code
  00000000			main PROC
 					
 					; code goes here
- 00000000  B8 00000000			MOV EAX, 0		
- 00000005  A0 00000000 R		MOV AL, var1
-					
- 0000000A  BB 00000000			MOV EBX, 0		
- 0000000F  8A 1D 00000001 R		MOV BL, var2
 
- 00000015  B9 00000000			MOV ECX, 0		
- 0000001A  8A 0D 00000002 R		MOV CL, var3
-
- 00000020  BA 00000000			MOV EDX, 0		
- 00000025  8A 15 00000003 R		MOV DL, var4
-
-
+ 00000000  B8 00000005			MOV EAX, 5
+ 00000005  8B 1D 00000000 R		MOV EBX, var1
+ 0000000B  F7 EB			iMUL EBX						; imul instruction multiply the content of EAX with the instruction operand 
+ 0000000D  A3 00000004 R		MOV PRODUCT, EAX
 					
 
- 0000002B  E8 00000000 E		call DumpRegs ; displays registers in console
+ 00000012  E8 00000000 E		call DumpRegs ; displays registers in console
 
 					exit
 
- 00000037			main ENDP
+ 0000001E			main ENDP
 				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/28/21 21:48:39
-example.asm						     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 12:07:41
+example-imul.asm					     Symbols 2 - 1
 
 
 
@@ -160,8 +151,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000004 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 00000037 Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000008 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001E Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -268,7 +259,7 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000037 Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001E Public STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -391,6 +382,7 @@ NULL . . . . . . . . . . . . . .	Number	 00000000h
 NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
 OPEN_ALWAYS  . . . . . . . . . .	Number	 00000004h   
 OPEN_EXISTING  . . . . . . . . .	Number	 00000003h   
+PRODUCT  . . . . . . . . . . . .	DWord	 00000004 _DATA	
 PeekConsoleInput . . . . . . . .	Text   	 PeekConsoleInputA
 RIGHT_ALT_PRESSED  . . . . . . .	Number	 00000001h   
 RIGHT_CTRL_PRESSED . . . . . . .	Number	 00000004h   
@@ -502,10 +494,7 @@ lightMagenta . . . . . . . . . .	Number	 0000000Dh
 lightRed . . . . . . . . . . . .	Number	 0000000Ch   
 magenta  . . . . . . . . . . . .	Number	 00000005h   
 red  . . . . . . . . . . . . . .	Number	 00000004h   
-var1 . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
-var2 . . . . . . . . . . . . . .	Byte	 00000001 _DATA	
-var3 . . . . . . . . . . . . . .	Byte	 00000002 _DATA	
-var4 . . . . . . . . . . . . . .	Byte	 00000003 _DATA	
+var1 . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   
