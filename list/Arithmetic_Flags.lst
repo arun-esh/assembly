@@ -1,5 +1,5 @@
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 13:48:15
-Arithmetic_INC_DEC.asm					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 14:39:50
+Arithmetic_Flags.asm					     Page 1 - 1
 
 
 				TITLE
@@ -36,35 +36,71 @@ Arithmetic_INC_DEC.asm					     Page 1 - 1
  00000000			.data
 
 					; data declarations go here
- 00000000 0B				var1 BYTE 11
- 00000001 0E				var2 BYTE 14
+ 00000000 FF				var1 BYTE 255
+ 00000001 FF				var2 BYTE 255
+
+ 00000002 4C				var3 sBYTE -180
+ 00000003 9C				var4 sBYTE -100
 
  00000000			.code
  00000000			main PROC
 					
 					; code goes here
- 00000000  E8 00000000 E		call DumpRegs ; displays registers in console
+					;call DumpRegs ; displays registers in console
+					Comment !
+						Var1 and var2 has the highest value a BYTE can hold.
+						If we add them, then there will be some changes in the flags.
 
- 00000005  FE 0D 00000000 R		DEC var1				; decreasing the value of var1
- 0000000B  B8 00000000			MOV eax, 0				; clearing EAX for clear visibility
- 00000010  A0 00000000 R		MOV al, var1			; decreased value of var1 moved to al
- 00000015  E8 00000000 E		call DumpRegs ; displays registers in console
+						Carry flag will set in this case.
+						!
+ 00000000  B8 00000000			MOV eax, 0
+ 00000005  A0 00000000 R		MOV al, var1			
+ 0000000A  02 05 00000001 R		ADD al, var2
+ 00000010  E8 00000000 E		call DumpRegs ; displays registers in console
 
- 0000001A  FE 05 00000001 R		INC var2
- 00000020  BB 00000000			MOV ebx, 0
- 00000025  8A 1D 00000001 R		MOV bl, var2
- 0000002B  E8 00000000 E		call DumpRegs ; displays registers in console
+					Comment !
+					ZERO FLAG
+						Var1 and var2 has the same value a BYTE can hold.
+						If we SUBTRACT them, then there will be some changes in the flags.
 
-					
+						ZERO flag will set in this case.
+						!
+ 00000015  B8 00000000			MOV eax, 0
+ 0000001A  A0 00000000 R		MOV al, var1			
+ 0000001F  2A 05 00000001 R		SUB al, var2
+ 00000025  E8 00000000 E		call DumpRegs ; displays registers in console
 
- 00000030  E8 00000000 E		call DumpRegs ; displays registers in console
 
+					Comment !
+					NEG
+						NEGATE any non-zero value, it will set the carry flag.
+
+						Carry flag will set in this case.
+						!
+ 0000002A  B8 00000000			MOV EAX, 0
+ 0000002F  B0 01			MOV al, 1
+ 00000031  F6 D8			NEG al		
+
+ 00000033  E8 00000000 E		call DumpRegs ; displays registers in console
+
+					Comment !
+					SUBTRACT
+						SUb 2 from 1 - 2, it will set the carry flag.
+
+						Carry flag will set in this case.
+						!
+ 00000038  B8 00000000			MOV EAX, 0
+ 0000003D  B0 01			MOV al, 1
+ 0000003F  2C 02			SUB al, 2
+						
+
+ 00000041  E8 00000000 E		call DumpRegs ; displays registers in console
 					exit
 
- 0000003C			main ENDP
+ 0000004D			main ENDP
 				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 13:48:15
-Arithmetic_INC_DEC.asm					     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 14:39:50
+Arithmetic_Flags.asm					     Symbols 2 - 1
 
 
 
@@ -157,8 +193,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000002 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000003C Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000004 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000004D Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -265,7 +301,7 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000003C Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000004D Public STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -501,6 +537,8 @@ magenta  . . . . . . . . . . . .	Number	 00000005h
 red  . . . . . . . . . . . . . .	Number	 00000004h   
 var1 . . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 var2 . . . . . . . . . . . . . .	Byte	 00000001 _DATA	
+var3 . . . . . . . . . . . . . .	Byte	 00000002 _DATA	
+var4 . . . . . . . . . . . . . .	Byte	 00000003 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   

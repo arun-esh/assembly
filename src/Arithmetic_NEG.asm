@@ -24,19 +24,11 @@ main PROC
 	; code goes here
 	call DumpRegs ; displays registers in console
 
-	DEC var1				; decreasing the value of var1
-	MOV eax, 0				; clearing EAX for clear visibility
-	MOV al, var1			; decreased value of var1 moved to al
+	NEG var1
+	MOV eax, 0
+	MOV al, var1
 	call DumpRegs ; displays registers in console
 
-	INC var2
-	MOV ebx, 0
-	MOV bl, var2
-	call DumpRegs ; displays registers in console
-
-	
-
-	call DumpRegs ; displays registers in console
 
 	exit
 
