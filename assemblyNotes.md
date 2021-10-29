@@ -28,7 +28,7 @@ stc										; Carry flag has no operand
 
 x86 instruction set uses different types of instruction operands.
 
-- [ ] Immediate		uses a numeric literal expression
+- [x] Immediate		uses a numeric literal expression
 
 - [ ] Register             uses a named register in the CPU
 
