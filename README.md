@@ -5,14 +5,18 @@
 # Table of Contents
 
 * Instructions
-  * [MOV Instruction](#mov)
-  * 
+
+  * [MOV](#mov)
+
+  
+
 * [How to get listing file (Visual Studio)](#How_to_get_listing_file)
+  
   * [Sample Listing File](#sample_Listing_File)
 
 
 
-# MOV<a name="mov"></a>
+# MOV <a name="mov"></a>
 
 :heavy_check_mark: This instruction copies the source operand to destination operand, leaving source operand unchanged.
 
@@ -27,6 +31,8 @@
 :x: an immediate value cannot be moved to a segment register.
 
 
+
+To move data from memory to another memory location, move source memory operand's value to register and then copy value from register to destination operand.
 
 
 
