@@ -1,10 +1,14 @@
 # Operands Types
 
+[TOC]
+
 x86 instruction formats
 
 ```[label:] mnemonic [operands][ ; comment ]```
 
-<button style="background-color: lightgreen; color: black; border: 2px solid white; border-radius:10px; font-size: 18px;" type="button">Format:  opcode **destination**, **source**	</button>
+Format:  opcode **destination**, **source**
+
+
 
 ```assembly
 ;	No operands
@@ -29,12 +33,12 @@ stc										; Carry flag has no operand
 x86 instruction set uses different types of instruction operands.
 
 - [x] Immediate		uses a numeric literal expression
-
 - [x] Register             uses a named register in the CPU
-
 - [x] Memory             references a memory location
 
-  
 
-<span style="color:red;font-size:2em; font-family:Papyrus">Java as Virtual Machine Concept</span>
+
+## MOV Instruction
+
+
 
