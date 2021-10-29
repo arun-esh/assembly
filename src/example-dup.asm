@@ -12,11 +12,14 @@ INCLUDELIB Irvine32.lib
 INCLUDELIB kernel32.lib
 INCLUDELIB user32.lib
 
+
+
 .data
 
 	; data declarations go here
+	;arrB  BYTE  10h,20h,30h,40h
 
-	value1 BYTE 2 DUP(9)
+
 
 
 	
@@ -24,9 +27,12 @@ INCLUDELIB user32.lib
 main PROC
 	
 	; code goes here
-	MOV EAX, 0
-	MOV Al, value1
-	;call WriteString				; call to print out strings
+	mov eax,13
+
+	sub eax,2
+
+	mov ebx, 1
+
 	call DumpRegs
 
 

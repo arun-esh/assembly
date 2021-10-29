@@ -36,7 +36,8 @@ INCLUDELIB user32.lib
 				" Please enter your name: ",0dh,0ah,0
 
 
-	string4 BYTE "Testing",0
+	string4 BYTE "Testing"
+	
 .code
 main PROC
 	
@@ -54,6 +55,7 @@ main PROC
 	call DumpRegs ; displays registers in console
 
 	MOV EDX, OFFSET string4
+	;MOV Dl, var1
 	call WriteString				; call to print out strings
 	call DumpRegs ; displays registers in console
 
