@@ -16,16 +16,18 @@ INCLUDELIB user32.lib
 
 	; data declarations go here
 	var1 WORD 10
-	var2 WORD 785Bh
+	PRODUCT WORD ?
+
 
 .code
 main PROC
 	
 	; code goes here
 
-	MOV EAX, 5
+	MOV AX, 5
 	MOV BX, var1
 	iMUL BX
+	MOV PRODUCT, AX
 	
 
 	call DumpRegs ; displays registers in console

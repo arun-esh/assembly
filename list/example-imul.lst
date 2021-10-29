@@ -1,5 +1,5 @@
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 11:46:56
-example-mov.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 11:55:48
+example-imul.asm					     Page 1 - 1
 
 
 				TITLE
@@ -37,27 +37,30 @@ example-mov.asm						     Page 1 - 1
 
 					; data declarations go here
  00000000 000A				var1 WORD 10
- 00000002 785B				var2 WORD 785Bh
+ 00000002 0000				PRODUCT WORD ?
+
 
  00000000			.code
  00000000			main PROC
 					
 					; code goes here
 
- 00000000  B8 00000005			MOV EAX, 5
- 00000005  66| 8B 1D			MOV BX, var1
+ 00000000  66| B8 0005			MOV AX, 5
+ 00000004  66| 8B 1D			MOV BX, var1
 	   00000000 R
- 0000000C  66| F7 EB			iMUL BX
+ 0000000B  66| F7 EB			iMUL BX
+ 0000000E  66| A3			MOV PRODUCT, AX
+	   00000002 R
 					
 
- 0000000F  E8 00000000 E		call DumpRegs ; displays registers in console
+ 00000014  E8 00000000 E		call DumpRegs ; displays registers in console
 
 					exit
 
- 0000001B			main ENDP
+ 00000020			main ENDP
 				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 11:46:56
-example-mov.asm						     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 11:55:48
+example-imul.asm					     Symbols 2 - 1
 
 
 
@@ -151,7 +154,7 @@ Segments and Groups:
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
 _DATA  . . . . . . . . . . . . .	32 Bit	 00000004 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001B Para	  Public  'CODE'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000020 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -258,7 +261,7 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001B Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000020 Public STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -381,6 +384,7 @@ NULL . . . . . . . . . . . . . .	Number	 00000000h
 NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
 OPEN_ALWAYS  . . . . . . . . . .	Number	 00000004h   
 OPEN_EXISTING  . . . . . . . . .	Number	 00000003h   
+PRODUCT  . . . . . . . . . . . .	Word	 00000002 _DATA	
 PeekConsoleInput . . . . . . . .	Text   	 PeekConsoleInputA
 RIGHT_ALT_PRESSED  . . . . . . .	Number	 00000001h   
 RIGHT_CTRL_PRESSED . . . . . . .	Number	 00000004h   
@@ -493,7 +497,6 @@ lightRed . . . . . . . . . . . .	Number	 0000000Ch
 magenta  . . . . . . . . . . . .	Number	 00000005h   
 red  . . . . . . . . . . . . . .	Number	 00000004h   
 var1 . . . . . . . . . . . . . .	Word	 00000000 _DATA	
-var2 . . . . . . . . . . . . . .	Word	 00000002 _DATA	
 white  . . . . . . . . . . . . .	Number	 0000000Fh   
 wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
 yellow . . . . . . . . . . . . .	Number	 0000000Eh   
