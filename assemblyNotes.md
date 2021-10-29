@@ -30,9 +30,10 @@ x86 instruction set uses different types of instruction operands.
 
 - [x] Immediate		uses a numeric literal expression
 
-- [ ] Register             uses a named register in the CPU
+- [x] Register             uses a named register in the CPU
 
-- [ ] Memory             references a memory location
+- [x] Memory             references a memory location
 
   
 
+<span style="background-color: lightgreen" class="label success">Success</span> 
