@@ -4,15 +4,33 @@
 
 # Table of Contents
 
-* Lab
+* Instructions
+  * [MOV Instruction](#mov)
+  * 
 * [How to get listing file (Visual Studio)](#How_to_get_listing_file)
   * [Sample Listing File](#sample_Listing_File)
 
 
 
+# [MOV](<a name="mov"></a>)
+
+:heavy_check_mark: This instruction copies the source operand to destination operand, leaving source operand unchanged.
+
+```mov destination, source```
+
+:heavy_check_mark: Both Operands must be of same size.
+
+:x: Both operands cannot be memory operand.
+
+:x: CS, EIP, and IP cannot be destination operands.
+
+:x: an immediate value cannot be moved to a segment register.
 
 
-## [How to get listing file (Visual Studio)](How_to_get_listing_file)
+
+
+
+## [How to get listing file (Visual Studio)](<a name="How_to_get_listing_file"></a>)
 
 ![image1](img/1_listing_file.png)
 
@@ -24,26 +42,5 @@
 
 Here is the sample Listing file: [Sample Listing file](/samplefiles/irvine.lst)
 
-```
-# Table of Contents
-1. [Example](#example)
-2. [Example2](#example2)
-3. [Third Example](#third-example)
-4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
-
-## Example
-## Example2
-## Third Example
-## [Fourth Example](http://www.fourthexample.com)
-```
-
-# Table of Contents
-1. 
-
-
-## Example
-## Example2
-## Third Example
-## [Fourth Example](http://www.fourthexample.com)
 
