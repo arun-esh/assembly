@@ -36,4 +36,5 @@ x86 instruction set uses different types of instruction operands.
 
   
 
-<span style="background-color: lightgreen" class="label success">Success</span> 
+<span style="color:red;font-size:2em; font-family:Papyrus">Java as Virtual Machine Concept</span>
+
