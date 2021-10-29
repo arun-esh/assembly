@@ -15,28 +15,29 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
-	var1 BYTE 50h
-	var2 BYTE 60h
-	var3 BYTE 70h
-	var4 BYTE 80h
+	var1 mem16 985Bh
+	var2 WORD 785Bh
 
 .code
 main PROC
 	
 	; code goes here
+
 	MOV EAX, 0		
-	MOV AL, var1
-	
+	MOV AX, var1
+
 	MOV EBX, 0		
-	MOV BL, var2
+	MOV BX, var2
+	
 
-	MOV ECX, 0		
-	MOV CL, var3
-
-	MOV EDX, 0		
-	MOV DL, var4
+	call DumpRegs ; displays registers in console
 
 
+	MOV EAX, 0		
+	MOVSX EAX, var1
+
+	MOV EBX, 0		
+	MOVSX EBX, var2
 	
 
 	call DumpRegs ; displays registers in console
