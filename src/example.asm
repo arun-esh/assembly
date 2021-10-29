@@ -4,16 +4,18 @@
 ; INC, DEC, and NEG instructions, and how
 ; they affect the CPU status flags.
 
-.386
-.model flat,stdcall
-.stack 4096
-ExitProcess proto,dwExitCode:dword
+INCLUDE Irvine32.inc
+INCLUDELIB Irvine32.lib
+
+; these two files are only necessary if you're not using Visual Studio
+INCLUDELIB kernel32.lib
+INCLUDELIB user32.lib
 
 .data
-Rval   SDWORD ?
-Xval   SDWORD 26
-Yval   SDWORD 30
-Zval   SDWORD 40
+	Rval   SDWORD ?
+	Xval   SDWORD 26
+	Yval   SDWORD 30
+	Zval   SDWORD 40
 
 .code
 main proc
@@ -52,6 +54,9 @@ main proc
 	mov	al,-128
 	sub	al,1		; OF = 1
 
-	invoke ExitProcess,0
+	call DumpRegs ; displays registers in console
+
+	exit
+
 main endp
 end main
