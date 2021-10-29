@@ -15,6 +15,7 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
+
 	var1 DWORD 10
 	PRODUCT DWORD ?
 

@@ -1,3 +1,4 @@
+
 Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 12:07:41
 example-imul.asm					     Page 1 - 1
 
@@ -36,18 +37,12 @@ example-imul.asm					     Page 1 - 1
  00000000			.data
 
 					; data declarations go here
- 00000000 0000000A			var1 DWORD 10
- 00000004 00000000			PRODUCT DWORD ?
 
 
  00000000			.code
  00000000			main PROC
 					
-					; code goes here
-
- 00000000  B8 00000005			MOV EAX, 5
- 00000005  8B 1D 00000000 R		MOV EBX, var1
- 0000000B  F7 EB			iMUL EBX						; imul instruction multiply the content of EAX with the instruction operand 
+7 EB			iMUL EBX						; imul instruction multiply the content of EAX with the instruction operand 
  0000000D  A3 00000004 R		MOV PRODUCT, EAX
 					
 
@@ -55,9 +50,7 @@ example-imul.asm					     Page 1 - 1
 
 					exit
 
- 0000001E			main ENDP
-				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    10/29/21 12:07:41
+
 example-imul.asm					     Symbols 2 - 1
 
 
@@ -143,17 +136,6 @@ SYSTEMTIME . . . . . . . . . . .	 00000010
   wMilliseconds  . . . . . . . .	 0000000E	 Word
 WINDOW_BUFFER_SIZE_RECORD  . . .	 00000004
   dwSize . . . . . . . . . . . .	 00000000	 DWord
-
-
-Segments and Groups:
-
-                N a m e                 Size     Length   Align   Combine Class
-
-FLAT . . . . . . . . . . . . . .	GROUP
-STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000008 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000001E Para	  Public  'CODE'	
-
 
 Procedures, parameters, and locals:
 
@@ -251,23 +233,6 @@ WriteConsoleOutputCharacterA . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteDec . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteFile  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteFloat . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteHexB  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteHex . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteInt . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteStackFrameName  . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000001E Public STDCALL
-printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
-scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
-wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
-
-
-Symbols:
-
-                N a m e                 Type     Value    Attr
 
 @CodeSize  . . . . . . . . . . .	Number	 00000000h   
 @DataSize  . . . . . . . . . . .	Number	 00000000h   
@@ -380,15 +345,7 @@ MOUSE_EVENT  . . . . . . . . . .	Number	 00000002h
 MessageBox . . . . . . . . . . .	Text   	 MessageBoxA
 NULL . . . . . . . . . . . . . .	Number	 00000000h   
 NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
-OPEN_ALWAYS  . . . . . . . . . .	Number	 00000004h   
-OPEN_EXISTING  . . . . . . . . .	Number	 00000003h   
-PRODUCT  . . . . . . . . . . . .	DWord	 00000004 _DATA	
-PeekConsoleInput . . . . . . . .	Text   	 PeekConsoleInputA
-RIGHT_ALT_PRESSED  . . . . . . .	Number	 00000001h   
-RIGHT_CTRL_PRESSED . . . . . . .	Number	 00000004h   
-ReadConsoleInput . . . . . . . .	Text   	 ReadConsoleInputA
-ReadConsole  . . . . . . . . . .	Text   	 ReadConsoleA
-SCROLLLOCK_ON  . . . . . . . . .	Number	 00000040h   
+OP . . . . . . . .	Number	 00000040h   
 SHIFT_MASK . . . . . . . . . . .	Number	 00000010h   
 SHIFT_PRESSED  . . . . . . . . .	Number	 00000010h   
 STD_ERROR_HANDLE . . . . . . . .	Number	 -0000000Ch   
@@ -489,15 +446,7 @@ green  . . . . . . . . . . . . .	Number	 00000002h
 lightBlue  . . . . . . . . . . .	Number	 00000009h   
 lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
 lightGray  . . . . . . . . . . .	Number	 00000007h   
-lightGreen . . . . . . . . . . .	Number	 0000000Ah   
-lightMagenta . . . . . . . . . .	Number	 0000000Dh   
-lightRed . . . . . . . . . . . .	Number	 0000000Ch   
-magenta  . . . . . . . . . . . .	Number	 00000005h   
-red  . . . . . . . . . . . . . .	Number	 00000004h   
-var1 . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
-white  . . . . . . . . . . . . .	Number	 0000000Fh   
-wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
-yellow . . . . . . . . . . . . .	Number	 0000000Eh   
+lightGreen . . . . . . . . . . .	Number	 0000000Ah    . .	Number	 0000000Eh   
 
 	   0 Warnings
 	   0 Errors
