@@ -15,20 +15,15 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
-	;one WORD 8002h
-	;two WORD 4321h
+	fib1 BYTE 1;
+	fib2 BYTE 1;
 
 .code
 main PROC
 	
 	; code goes here
-	;MOV EDX, 21348041h
-	call DumpRegs ; displays registers in console
-	;MOVSX EDX, one
-	call DumpRegs ; displays registers in console
-	;MOVSX EDX, two	
-	MOV al, 1
-	ADD al, 3
+	
+
 	call DumpRegs ; displays registers in console
 
 	exit
