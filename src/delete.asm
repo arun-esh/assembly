@@ -23,12 +23,12 @@ main PROC
 	
 	; code goes here
 	;MOV EDX, 21348041h
-	call DumpRegs ; displays registers in console
+	;call DumpRegs ; displays registers in console
 	;MOVSX EDX, one
-	call DumpRegs ; displays registers in console
+	;call DumpRegs ; displays registers in console
 	;MOVSX EDX, two	
 	MOV al, 1
-	ADD al, 3
+	ADD al, 2
 	call DumpRegs ; displays registers in console
 
 	exit
