@@ -46,7 +46,7 @@ wine --version
 
 
 
-Add SSH Key to Github <a name="SSH"></a>
+# Add SSH Key to Github <a name="SSH"></a>
 
 **Run on your linux machine**
 
