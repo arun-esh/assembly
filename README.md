@@ -4,6 +4,9 @@
 
 # Table of Contents
 
+* Installation
+  * [WINE](#wine)
+
 * Instructions
 
   * [MOV](#mov)
@@ -13,6 +16,32 @@
 * [How to get listing file (Visual Studio)](#How_to_get_listing_file)
   
   * [Sample Listing File](#sample_Listing_File)
+
+
+
+# Install Wine <a name="wine"></a>
+
+```bash
+dpkg --print-architecture
+
+dpkg --print-foreign-architectures
+sudo dpkg --add-architecture i386
+dpkg --print-foreign-architectures
+
+wget -nc https://dl.winehq.org/wine-builds/winehq.key
+
+sudo -H gpg -o /etc/apt/trusted.gpg.d/winehq.key.gpg --dearmor winehq.key
+
+# Add the repository.
+
+sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+
+sudo apt update
+
+sudo apt install --install-recommends winehq-stable
+
+wine --version
+```
 
 
 
