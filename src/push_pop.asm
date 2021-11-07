@@ -16,15 +16,25 @@ INCLUDELIB user32.lib
 
 	; data declarations go here
 
+	var1 DWORD ?
+	var2 WORD ?
+
+
 .code
 main PROC
 	
 	; code goes here
-	
-
+	MOV EAX, 0
+	pushfd			; push the flags to stack
 	call DumpRegs ; displays registers in console
-
+	
+	pop var1
+	call DumpRegs ; displays registers in console
+	
+	MOV EAX, var1
+	call DumpRegs ; displays registers in console
+	
 	exit
-
+	
 main ENDP
 END main

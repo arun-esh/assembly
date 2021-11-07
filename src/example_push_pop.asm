@@ -27,33 +27,23 @@ main PROC
 	
 	; code goes here
 	MOV EAX, 0
-	MOV EDX, OFFSET myString
+	MOV EBX, OFFSET myString
 	call WriteString
 	call DumpRegs ; displays registers in console
 	
-	MOV ECX, myStringSize
+	MOV  ECX, myStringSize
 	MOV ESI, 0
 	call DumpRegs ; displays registers in console
 	
 	Loop1:
-		movzx eax, mystring[esi]
+		movzx eax, myString[esi]
+		call writestring
 		call DumpRegs ; displays registers in console
 		push eax
 		inc esi
 		loop Loop1
-
-	MOV ECX, myStringSize
-	MOV ESI, 0
-
-	Loop2:
-		pop eax
-		mov getName[esi], al
-		inc esi
-		loop Loop2
 	;call DumpRegs ; displays registers in console
-		mov EDX, OFFSET getName
-		call WriteString
-		call Crlf
+	
 	exit
 	
 main ENDP
