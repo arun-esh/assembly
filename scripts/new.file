@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# This script will copy the source default 
+# file /vagrant/github/assembly/docs/default/source.asm
+#
+# 
+echo -n "File name required: "
+read FILE
+cp /vagrant/github/assembly/docs/default/source.asm $FILE.asm 
+
+
+vim $FILE.asm

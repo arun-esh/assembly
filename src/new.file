@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo -p "Enter file name"
+read 
+cp source.asm 

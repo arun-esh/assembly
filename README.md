@@ -117,4 +117,25 @@ Here is the sample Listing file: [Sample Listing file](/docs/default/irvine.lst)
 
 
 
-​	
+# SSH into Server
+
+
+
+Server: target machine to ssh
+
+Client: machine to initiate the ssh
+
+
+
+Client Machine
+
+```ssh-keygen -t rsa```
+
+copy to Server
+
+```ssh-copy-id user@ip.ad.dr.ess```
+
+Result
+
+```ssh user@ip.ad.dr.ess```
+
