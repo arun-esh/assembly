@@ -1,5 +1,5 @@
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 11:52:25
-main.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 15:27:29
+proc_example.asm					     Page 1 - 1
 
 
 				TITLE
@@ -37,20 +37,27 @@ main.asm						     Page 1 - 1
 
 					; data declarations go here
 
+
  00000000			.code
  00000000			main PROC
 					
 					; code goes here
 					
-
- 00000000  E8 00000000 E		call DumpRegs ; displays registers in console
-
+ 00000000				sumof PROC
+ 00000000  B8 00000000				MOV EAX, 0
+ 00000005  BB 0000000A				MOV EBX, 10
+ 0000000A  B9 00000005				MOV ECX, 5
+ 0000000F  03 C3				ADD EAX, EBX
+ 00000011  03 C1				ADD EAX, ECX
+ 00000013  E8 00000000 E			call Dumpregs
+ 00000018  C3					ret 
+ 00000019				Sumof ENDP
 					exit
-
- 0000000C			main ENDP
+					
+ 00000020			main ENDP
 				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 11:52:25
-main.asm						     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 15:27:29
+proc_example.asm					     Symbols 2 - 1
 
 
 
@@ -144,7 +151,7 @@ Segments and Groups:
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
 _DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000000C Para	  Public  'CODE'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000020 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -251,9 +258,10 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000000C Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000020 Public STDCALL
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+sumof  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000019 Public STDCALL
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 
 

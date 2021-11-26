@@ -1,5 +1,5 @@
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 11:52:25
-main.asm						     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 20:24:52
+assignmet5.asm						     Page 1 - 1
 
 
 				TITLE
@@ -33,24 +33,48 @@ main.asm						     Page 1 - 1
 				INCLUDELIB kernel32.lib
 				INCLUDELIB user32.lib
 
+
  00000000			.data
 
 					; data declarations go here
+ 00000000  0000000A [			array BYTE 10 DUP(?)
+	    00
+	   ]
+					
 
  00000000			.code
  00000000			main PROC
 					
 					; code goes here
-					
 
- 00000000  E8 00000000 E		call DumpRegs ; displays registers in console
+ 00000000  BE 00000000 R		mov esi, offset array
+ 00000005  B9 00000014			mov ecx, 20
 
+
+ 0000000A				L1:
+ 0000000A  51					push ecx
+ 0000000B  B9 0000000A				mov ecx, lengthof array
+
+ 00000010					L2:
+ 00000010  B8 0000001A					mov eax, 26
+ 00000015  E8 00000000 E				call RandomRange
+ 0000001A  83 C0 41					add eax, 65
+ 0000001D  89 06					mov [esi], eax
+ 0000001F  E8 00000000 E				call WriteChar
+ 00000024  E2 EA				loop L2
+
+ 00000026  E8 00000000 E			call Crlf
+ 0000002B  59					pop ecx
+						
+						
+ 0000002C  E2 DC			loop L1
 					exit
 
- 0000000C			main ENDP
+
+ 00000035			main ENDP
 				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 11:52:25
-main.asm						     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/07/21 20:24:52
+assignmet5.asm						     Symbols 2 - 1
 
 
 
@@ -143,8 +167,8 @@ Segments and Groups:
 
 FLAT . . . . . . . . . . . . . .	GROUP
 STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
-_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
-_TEXT  . . . . . . . . . . . . .	32 Bit	 0000000C Para	  Public  'CODE'	
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000000A Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000035 Para	  Public  'CODE'	
 
 
 Procedures, parameters, and locals:
@@ -251,7 +275,9 @@ WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External
 WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
 WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
-main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000000C Public STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000035 Public STDCALL
+  L1 . . . . . . . . . . . . . .	L Near	 0000000A _TEXT	
+  L2 . . . . . . . . . . . . . .	L Near	 00000010 _TEXT	
 printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
 wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
@@ -470,6 +496,7 @@ VK_UP  . . . . . . . . . . . . .	Number	 00000026h
 WINDOW_BUFFER_SIZE_EVENT . . . .	Number	 00000004h   
 WriteConsoleOutputCharacter  . .	Text   	 WriteConsoleOutputCharacterA
 WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
+array  . . . . . . . . . . . . .	Byte	 00000000 _DATA	
 black  . . . . . . . . . . . . .	Number	 00000000h   
 blue . . . . . . . . . . . . . .	Number	 00000001h   
 brown  . . . . . . . . . . . . .	Number	 00000006h   

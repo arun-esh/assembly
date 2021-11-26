@@ -16,15 +16,22 @@ INCLUDELIB user32.lib
 
 	; data declarations go here
 
+
 .code
 main PROC
 	
 	; code goes here
 	
-
-	call DumpRegs ; displays registers in console
-
+	sumof PROC
+		MOV EAX, 0
+		MOV EBX, 10
+		MOV ECX, 5
+		ADD EAX, EBX
+		ADD EAX, ECX
+		call Dumpregs
+		ret 
+	Sumof ENDP
 	exit
-
+	
 main ENDP
 END main
