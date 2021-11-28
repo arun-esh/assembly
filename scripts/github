@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# This script will commit to Github 
+#
+# 
+git add .
+echo -n "Commit: "
+read FILE
+
+git commit -m "$FILE"
+git push
