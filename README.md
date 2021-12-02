@@ -5,8 +5,9 @@
 # Table of Contents
 
 * Installation
+* new
   * [WINE](#wine)
-  * [Add SSH to account](#SSH)
+  * [Add SBSH to account](#SSH)
 
 * Instructions
 
