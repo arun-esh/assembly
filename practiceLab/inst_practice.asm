@@ -63,6 +63,26 @@ main PROC
 
     -
 
+    ; Sign Extension
+
+    MOV AX, -9h
+    MOVSX EAX, AL
+
+    call dumpRegs
+
+    COMMENT -
+    
+    Output:
+    It will preserve the sign and will fill all the rest of the bits with sign bit.
+    If sign bit is zero, then with 0's, and if sign bit is 1,hten with 1's.
+
+
+    EAX=FFFFFFF7  EBX=00000008  ECX=00000000  EDX=00402080
+    ESI=00000000  EDI=00000000  EBP=0031FF48  ESP=0031FF34
+    EIP=004020AB  EFL=00000247  CF=1  SF=0  ZF=1  OF=0  AF=0  PF=1
+
+    -
+
 	exit
 
 main ENDP
