@@ -85,10 +85,14 @@ main PROC
 
     ; XCHG
 
-    XCHG EAX, EBX
-    call dumpRegs
+    XCHG EAX, EBX   ;        EAX=FFFFFFF7  EBX=00000008
+    call dumpRegs   ; Output EAX=00000008  EBX=FFFFFFF7
 
-    <img src="img/xchg.png" alt="xchg" height="300" width="1900"/>
+    XCHG mem, mem   ; error One operand must be a register
+
+    ; 
+
+
 	exit
 
 main ENDP
