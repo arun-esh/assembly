@@ -12,6 +12,8 @@ INCLUDELIB Irvine32.lib
 INCLUDELIB kernel32.lib
 INCLUDELIB user32.lib
 
+
+
 .data
 
 	; data declarations go here
@@ -20,6 +22,16 @@ INCLUDELIB user32.lib
 main PROC
 	
 	; code goes here
+	PUSH EBP
+	MOV EBP, ESP
+	SUB ESP, 476
+	PUSH EBX
+	PUSH ESI
+	PUSH EDI
+	LEA EDI, DWORD PTR [EBP-476]
+	MOV ECX, 119
+	MOV EAX, -858993460
+	REP STOSD
 	
 
 	call DumpRegs ; displays registers in console

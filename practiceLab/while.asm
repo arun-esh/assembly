@@ -1,6 +1,6 @@
 TITLE
 
-; Name: Basic knwoledge
+; Name: 
 ; Date: 
 ; ID: 
 ; Description: 
@@ -15,15 +15,20 @@ INCLUDELIB user32.lib
 .data
 
 	; data declarations go here
-
+    COUNT WORD 5
 .code
 main PROC
 	
 	; code goes here
-	mov eax, 0
-    add eax, 6
-    stc
-    	
+    MOV EBX, 0 
+    
+    call DumpRegs ; displays registers in console
+    top:cmp ebx, COUNT
+        INC EBX
+        call DumpRegs ; displays registers in console
+        jmp top
+
+
 	call DumpRegs ; displays registers in console
 
 	exit
