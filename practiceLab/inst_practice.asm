@@ -83,6 +83,12 @@ main PROC
 
     -
 
+    ; XCHG
+
+    XCHG EAX, EBX
+    call dumpRegs
+
+    <img src="img/xchg.png" alt="xchg" height="300" width="1900"/>
 	exit
 
 main ENDP
