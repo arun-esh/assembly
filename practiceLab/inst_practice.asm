@@ -45,12 +45,17 @@ main PROC
     call dumpRegs   ; Display registers
     
     mov bl, 8h     ; mov 8 to BL
-    MOVZX EBX, BL
+    MOVZX EBX, BL  ; BL will copied over and rest will be filled with 0s
     call dumpRegs
 
     COMMENT -
     
-    Output
+    Output:
+    It will not preserve the sign and will fill all the rest of the bits with 0s.
+    In this case, EBX has some random value, moved to BL just for understanding
+    purposes. MOVZX is called zero extension. Just MOV will crash here as size
+    is not the same of both the operands.
+    All upper bits will get replaced by 0s.
 
     EAX=00000000  EBX=00000008  ECX=00000000  EDX=00402080
     ESI=00000000  EDI=00000000  EBP=0031FF48  ESP=0031FF34
