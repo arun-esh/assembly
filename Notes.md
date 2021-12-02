@@ -15,7 +15,7 @@ XCHG reg, mem
 XCHG mem, reg
 ```
 
-<img src="img/assembly.png" alt="drawing" height="300" width="1900"/>
+<img src="img/xchg.png" alt="xchg" height="300" width="1900"/>
 
 # Syntax
 
