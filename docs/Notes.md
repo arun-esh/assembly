@@ -9,7 +9,7 @@
 
 ```XCHG``` will exchange the contents of the two operands.
 
-```
+```assembly
 XCHG reg, reg
 XCHG reg, mem
 XCHG mem, reg
