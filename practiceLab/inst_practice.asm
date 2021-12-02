@@ -44,8 +44,20 @@ main PROC
     ; mov EAX,EBX 
     call dumpRegs   ; Display registers
     
-    movzx bl, 8     ; mov 8 to AL using Zero extension
+    mov bl, 8h     ; mov 8 to BL
+    MOVZX EBX, BL
     call dumpRegs
+
+    COMMENT -
+    
+    Output
+
+    EAX=00000000  EBX=00000008  ECX=00000000  EDX=00402080
+    ESI=00000000  EDI=00000000  EBP=0031FF48  ESP=0031FF34
+    EIP=004020AB  EFL=00000247  CF=1  SF=0  ZF=1  OF=0  AF=0  PF=1
+
+    -
+
 	exit
 
 main ENDP
