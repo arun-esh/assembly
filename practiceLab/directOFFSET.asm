@@ -23,6 +23,9 @@ INCLUDELIB user32.lib
 
 	testArray		WORD 	1234h, 5678h, 9734h
 
+	A 				SWORD	1234h, -1
+	B 				SDWORD	55h, 66778899h
+
 .code
 main PROC
 	
@@ -96,7 +99,7 @@ main PROC
 	MOV DX, testArray+4
 	call DumpRegs 						; 	displays registers in console
 	
-
+	
 
 	exit
 

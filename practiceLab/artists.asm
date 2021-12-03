@@ -24,11 +24,7 @@ artist3 = Impressionism
 
 .code
 main PROC
-	;call Clrscr  
-
-	; display artist
-	mov	edx, offset artist1
-	call WriteString
+	
 
 	call DumpRegs
 
