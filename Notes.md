@@ -1,9 +1,9 @@
 # Notes
 # Table of Contents
 
-* Instructions
-* [XCHG](#xchg)
-* [Direct Offset](#direct_offset)
+  - Instructions
+  - [XCHG](#xchg)
+  - [Direct Offset](#direct_offset)
   
 
 # XCHG <a name="xchg"></a>
@@ -75,6 +75,22 @@ Cf = INVERT (carry out of the MSB)
 Negate the source and ADD it to the destination
 OF = CF XOR MSB
 
+
+# OFFSET Operator
+
+OFFSET returns the distance in bytes, of a label from the beginning of its enclosing (code, data, stack,..) segment
+
+* Protected Mode: 32 bits virtual address
+* Real mode: 16 bits virtual address
+
+OFFSET returns the address of the variable.
+
+# PTR OPerator
+PTR can also be used to combine elements of a smaller data type and move them into a larger operand. The CPU will automatically reverse the bytes.
+
+# TYPE Operator
+
+The TYPE operator returns the size, in bytes, of a single element of a data declaration.
 
 
 
