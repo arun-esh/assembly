@@ -1,9 +1,9 @@
 TITLE
 
-; Name: 
+; Name: TYPE OPerator
 ; Date: 
 ; ID: 
-; Description: 
+; Description: Returns the size of the Variable
 
 INCLUDE Irvine32.inc
 INCLUDELIB Irvine32.lib
@@ -19,8 +19,6 @@ INCLUDELIB user32.lib
 	var2 WORD ?
 	var3 DWORD ?
 	var4 QWORD ?
-.code
-
 
 .code
 main PROC
@@ -32,10 +30,10 @@ main PROC
 	MOV EDX, 0
 
 
-	mov eax,TYPE var1 
-	mov ebx,TYPE var2 
-	mov ecx,TYPE var3 
-	mov edx,TYPE var4
+	mov eax,TYPE var1		; size of variable BYTE 1
+	mov ebx,TYPE var2		; size of variable WORD 2
+	mov ecx,TYPE var3		; size of variable DWORD 4	
+	mov edx,TYPE var4		; size of variable QWORD 8
 
 	
 

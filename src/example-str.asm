@@ -48,16 +48,16 @@ main PROC
 
 	MOV EDX, OFFSET string2
 	call WriteString				; call to print out strings
-	call DumpRegs ; displays registers in console
+	call DumpRegs 					; displays registers in console
 
 	MOV EDX, OFFSET string3
 	call WriteString				; call to print out strings
-	call DumpRegs ; displays registers in console
+	call DumpRegs 					; displays registers in console
 
 	MOV EDX, OFFSET string4
 	;MOV Dl, var1
 	call WriteString				; call to print out strings
-	call DumpRegs ; displays registers in console
+	call DumpRegs 					; displays registers in console
 
 	exit
 
