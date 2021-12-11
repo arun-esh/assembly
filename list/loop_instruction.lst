@@ -1,14 +1,14 @@
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/22/21 17:25:29
-loop_instruction.asm					     Page 1 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/22/21 19:07:36
+..\..\..\..\github\assembly\src\loop_instruction.asm	     Page 1 - 1
 
 
 				TITLE
-
+				
 				; Name: 
 				; Date: 
 				; ID: 
 				; Description: 
-
+				
 				INCLUDE Irvine32.inc
 			      C ; Include file for Irvine32.lib             (Irvine32.inc)
 			      C 
@@ -28,26 +28,26 @@ loop_instruction.asm					     Page 1 - 1
 			      C .LIST
 			      C 
 				INCLUDELIB Irvine32.lib
-
+				
 				; these two files are only necessary if you're not using Visual Studio
 				INCLUDELIB kernel32.lib
 				INCLUDELIB user32.lib
-
+				
  00000000			.data
-
+				
 					; data declarations go here
 					;
-
+				
  00000000			.code
  00000000			main PROC
 					
 					; code goes here
-
+				
  00000000  66| B8 0000			mov ax, 0
- 00000004  B9 00000005			mov ecx, 5
-
-
-
+ 00000004  B9 00000000			mov ecx, 0
+				
+				
+				
  00000009				L1:
  00000009  66| 40				inc ax
  0000000B  E8 00000000 E			call DumpRegs ; displays registers in console
@@ -56,14 +56,14 @@ loop_instruction.asm					     Page 1 - 1
 					
 					
 						
-
+				
  00000012  E8 00000000 E		call DumpRegs ; displays registers in console
 					exit
-
+				
  0000001E			main ENDP
 				END main
-Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/22/21 17:25:29
-loop_instruction.asm					     Symbols 2 - 1
+Microsoft (R) Macro Assembler Version 14.29.30136.0	    11/22/21 19:07:36
+..\..\..\..\github\assembly\src\loop_instruction.asm	     Symbols 2 - 1
 
 
 

@@ -1,0 +1,83 @@
+
+INCLUDE Irvine32.inc
+INCLUDELIB Irvine32.lib
+
+INTEGER_COUNT = 3
+
+.data
+	; data declarations go here
+	
+    array DWORD  INTEGER_COUNT DUP(?)
+
+	str1  BYTE  "Enter a signed integer: ",0
+    str2  BYTE  "The sum of the integers is: ",0
+
+
+
+.code
+main PROC
+
+	call Clrscr
+	mov esi,OFFSET array 
+	mov ecx,INTEGER_COUNT 
+	call PromptForIntegers 
+	call ArraySum
+	call DisplaySum
+	
+	exit
+
+main ENDP
+;-----------------------------------------------------
+PromptForIntegers PROC USES ecx edx esi
+;
+; Prompts the user for an arbitrary number of integers
+; and inserts the integers into an array.
+; Receives: ESI points to the array, ECX = array size
+; Returns:  nothing
+;-----------------------------------------------------
+	mov edx,OFFSET str1						; "Enter a signed integer"
+	L1: call WriteString					; display string
+		call ReadInt						; read integer into EAX
+		call Crlf							; go to next output line
+		mov [esi],eax						; store in array
+		add esi,TYPE DWORD					; next integer
+		loop L1
+		ret
+
+PromptForIntegers ENDP
+
+;-----------------------------------------------------
+ArraySum PROC USES esi ecx
+;
+; Calculates the sum of an array of 32-bit integers.
+; Receives: ESI points to the array, ECX = number
+;   of array elements
+; Returns:  EAX = sum of the array elements
+;-----------------------------------------------------
+		mov eax,0
+	L1: add eax, [esi]						; set the sum to zero
+add esi,TYPE DWORD; add each integer to sum
+; point to next integer
+; repeat for array size
+; sum is in EAX
+L1: add
+add esi,TYPE DWORD loop L1
+ret
+ArraySum ENDP
+eax,[esi]
+;-----------------------------------------------------
+DisplaySum PROC USES edx
+;
+; Displays the sum on the screen
+; Receives: EAX = the sum
+; Returns:  nothing
+;-----------------------------------------------------
+mov edx,OFFSET str2 call WriteString call WriteInt
+call Crlf
+    ret
+DisplaySum ENDP
+END main
+
+
+
+END main

@@ -92,6 +92,37 @@ PTR can also be used to combine elements of a smaller data type and move them in
 
 The TYPE operator returns the size, in bytes, of a single element of a data declaration.
 
+# Procedures
+
+Code is placed at lowest available address followed by data.
+
+The STACK is used for procedure calls and returns
+
+LIFO - Last In First Out
+
+The Stack is fixed when the program is loaded in the main memory.
+  - The Stack cannot be changed at run time.
+  - There is always a risk of overflow at run time.
+
+
+RUNTIME STACK
+  - managed by CPU using
+    1. SS (Stack Segment)
+    2. ESP (Stack Pointer)
+
+
+ESP is modified by instructions as CALL, RET, PUSH and POP
+
+ESP always points to the last value to be added to the top of the stack.
+or
+ESP is always pointing to the Top of the stack. And Stack is upside down.
+
+
+```push source  ```
+
+The source operand must be 16-bit or 32-bit in size.
+
+
 
 
 

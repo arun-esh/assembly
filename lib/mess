@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ../lib
+cp ../src/$1 .
+NEW=${1%%.*}
+#NEW=$1
+wine aml.exe /c /Zd /coff /EP $1 
+wine alink.exe /SUBSYSTEM:CONSOLE $NEW.obj 
+wine $NEW.exe 
+rm $NEW.exe 
+rm $NEW.obj 
+rm $NEW.asm 
+cd ..
